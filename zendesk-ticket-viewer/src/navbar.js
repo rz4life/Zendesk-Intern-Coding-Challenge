@@ -1,11 +1,11 @@
 import {Link} from 'react-router-dom'
-
 const Navbar = () =>{
 
-    return (
-        <div>
-            <Link to = '/alltickets'> 1 :- View All Tickets</Link>
-        </div>
+    return(
+       <nav>
+
+           <Link to = '/alltickets'> View all Tickets </Link>
+       </nav>
     )
 }
 

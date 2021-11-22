@@ -1,9 +1,8 @@
-const AllTickets = () =>{
+const Alltickets = () =>{
 
     return(
-        <div> This is All tickets page </div>
+        <div>Hello from All tickets </div>
     )
-
 }
 
-export default AllTickets
+export default Alltickets
