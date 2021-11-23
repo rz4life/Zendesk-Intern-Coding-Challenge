@@ -1,8 +1,8 @@
-const SingleTicket = () =>{
+const Singletickets = () =>{
 
     return(
-        <h2> Single Ticket page</h2>
+        <div>Hello from single tickets </div>
     )
 }
 
-export default SingleTicket
+export default Singletickets
