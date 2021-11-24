@@ -1,9 +1,4 @@
 import './App.css';
-// import {Route, Routes } from 'react-router-dom'
-// import Navbar from './navbar'
-// import Alltickets from './pages/alltickets'
-// import Singleticket from './pages/singleticket'
-
 import {useState} from 'react'
 import axios from 'axios'
 
@@ -12,19 +7,22 @@ function App() {
 
   const [pageNumber, setPageNumber] = useState(0)
   const [alltickets, setAllTicket] = useState({})
+  const [Singleticket, setSingleTicket] = useState({})
   const [ticketNumber, setticketNumber] = useState()
   const getAlltickets = async () =>{
 
     try {
       const getAlltickets = await axios.get(`https://zendeskcodingchallenge434.zendesk.com/api/v2/requests`,{ 
         authorization:{
-        username:'razaqalagbada@gmail.com',
+        username:'',
         password:''
         }
       })
+      setAllTicket(getAlltickets)
       console.log(getAlltickets)
       
     }catch(error){
+      setAllTicket("Sorry, there was a problem connecting to Zebdesk API")
       console.log(error) 
     }
   }
@@ -32,10 +30,12 @@ function App() {
   const getSingleTicket = async () =>{
     try {
       const getsingleTicket = await axios.get(`https://zendeskcodingchallenge434.zendesk.com/api/v2/search.json?query=${ticketNumber}`)
+      setSingleTicket(getsingleTicket)
       console.log("submited")
       
     }catch(error){
       console.log(error) 
+      setSingleTicket("Sorry, there was a problem connecting to Zebdesk API")
     }
   }
   return (
@@ -58,6 +58,7 @@ function App() {
         pageNumber === 1?
         <div>
           <h5>All tickets</h5>
+          <h5>{alltickets}</h5>
         </div>
         :null
       }
@@ -68,7 +69,7 @@ function App() {
       
           <input placeholder = 'Enter the Ticket Number here' value = {ticketNumber} onChange= {(e) =>(setticketNumber(e.target.value))}></input>
           <button onClick = {() =>(getSingleTicket())}>Search</button>
- 
+              
         </div>
         :null
       }
